@@ -7,7 +7,7 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
     { label: 'Active Drivers / Workers', value: '148', color: 'text-primary' },
     { label: 'Random Pool Compliance', value: '100%', color: 'text-status-compliant' },
     { label: 'Completed This Quarter', value: '38', color: 'text-secondary' },
-    { label: 'Upcoming Random Due', value: '4', color: 'text-status-pending' },
+    { label: 'Upcoming Random Due', value: '4', color: 'text-amber-600' },
   ];
 
   const recentEmployees = [
@@ -18,20 +18,20 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
   ];
 
   return (
-    <div className="absolute inset-0 z-50 flex items-end sm:items-center justify-center p-2 bg-inverse-surface/60 backdrop-blur-sm animate-fade-in">
+    <div className="absolute inset-0 z-50 flex items-end sm:items-center justify-center p-2.5 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
       <div
-        className="w-full max-w-lg bg-surface-card rounded-t-2xl sm:rounded-2xl shadow-2xl border border-border-subtle max-h-[90vh] flex flex-col overflow-hidden animate-slide-up"
+        className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 max-h-[88vh] flex flex-col overflow-hidden animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-4 bg-primary text-on-primary flex items-center justify-between">
+        <div className="p-3.5 bg-primary text-white flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[24px] text-tertiary-fixed">corporate_fare</span>
+            <span className="material-symbols-outlined text-[20px] text-amber-300">corporate_fare</span>
             <div>
-              <div className="font-headline-sm text-[16px] font-bold text-on-primary">
+              <div className="text-xs font-bold text-white leading-tight">
                 Employer Hub • B2B Management
               </div>
-              <div className="font-body-sm text-[11px] text-surface-container opacity-90">
+              <div className="text-[10px] text-blue-100 mt-0.5">
                 Workforce Random Rosters &amp; DOT Consortium
               </div>
             </div>
@@ -39,22 +39,22 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[18px]">close</span>
+            <span className="material-symbols-outlined text-[16px]">close</span>
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-4 overflow-y-auto space-y-4">
+        <div className="p-3.5 overflow-y-auto space-y-3 text-slate-800">
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-2 gap-2">
             {rosterStats.map((stat, i) => (
-              <div key={i} className="p-3 bg-surface-canvas rounded-xl border border-border-subtle">
-                <span className="text-[11px] font-label-caps text-on-surface-variant uppercase block">
+              <div key={i} className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-100">
+                <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wide block leading-tight">
                   {stat.label}
                 </span>
-                <span className={`text-[20px] font-bold ${stat.color} block mt-0.5`}>
+                <span className={`text-lg font-bold ${stat.color} block mt-1 leading-none`}>
                   {stat.value}
                 </span>
               </div>
@@ -62,11 +62,11 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
           </div>
 
           {/* DOT Consortium Notice */}
-          <div className="p-3 bg-surface-container-low rounded-xl border border-primary-container/20 flex items-start gap-2.5">
-            <span className="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">verified</span>
-            <div className="text-body-sm text-[12px]">
-              <span className="font-bold text-primary block">FMCSA Clearinghouse &amp; Consortium Active</span>
-              <p className="text-on-surface-variant mt-0.5">
+          <div className="p-2.5 bg-blue-50/60 rounded-xl border border-blue-100/80 flex items-start gap-2">
+            <span className="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified</span>
+            <div className="text-xs">
+              <span className="font-semibold text-primary block leading-tight">FMCSA Clearinghouse &amp; Consortium Active</span>
+              <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
                 Your quarterly 50% drug / 10% alcohol random testing quotas are on track for federal compliance.
               </p>
             </div>
@@ -74,32 +74,33 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
 
           {/* Recent Roster Screenings */}
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-headline-sm text-[14px] font-bold text-on-surface">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wide">
                 Workforce Testing Feed
               </span>
-              <span className="text-[11px] font-label-caps uppercase text-secondary font-bold">
+              <span className="text-[10px] font-semibold uppercase text-emerald-600 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 Live Sync
               </span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               {recentEmployees.map((emp, idx) => (
                 <div
                   key={idx}
-                  className="p-2.5 bg-surface-card rounded-xl border border-border-subtle flex items-center justify-between"
+                  className="p-2.5 bg-white rounded-xl border border-slate-100 shadow-xs flex items-center justify-between hover:bg-slate-50/60 transition-colors"
                 >
-                  <div>
-                    <div className="font-semibold text-body-sm text-[13px] text-on-surface">
-                      {emp.name} <span className="text-[11px] text-on-surface-variant font-normal">({emp.id})</span>
+                  <div className="min-w-0 pr-2">
+                    <div className="font-medium text-xs text-slate-800 truncate">
+                      {emp.name} <span className="text-[10px] text-slate-400 font-normal">({emp.id})</span>
                     </div>
-                    <div className="text-[11px] text-on-surface-variant">{emp.type} • {emp.date}</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5 truncate">{emp.type} • {emp.date}</div>
                   </div>
                   <span
-                    className={`px-2 py-0.5 rounded text-[10px] font-label-caps font-bold uppercase ${
+                    className={`px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wide shrink-0 ${
                       emp.status.includes('Analysis')
-                        ? 'bg-surface-container text-primary'
-                        : 'bg-surface-container-low text-status-compliant'
+                        ? 'bg-blue-50 text-primary border border-blue-200/60'
+                        : 'bg-emerald-50 text-emerald-700 border border-emerald-200/60'
                     }`}
                   >
                     {emp.status}
@@ -111,22 +112,22 @@ export default function EmployerHubModal({ isOpen, onClose, onScheduleRosterTest
         </div>
 
         {/* Footer actions */}
-        <div className="p-3 bg-surface-canvas border-t border-border-subtle flex items-center gap-2">
+        <div className="p-3 bg-slate-50 border-t border-slate-100 flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={() => {
               onClose();
               if (onScheduleRosterTest) onScheduleRosterTest();
             }}
-            className="flex-1 py-2.5 px-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors"
+            className="flex-1 py-2 px-3 bg-primary text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors shadow-sm cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[18px]">add_circle</span>
+            <span className="material-symbols-outlined text-[16px]">add_circle</span>
             <span>Order Roster Screening</span>
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="py-2.5 px-4 bg-surface-container text-on-surface rounded-lg font-label-md text-label-md font-semibold hover:bg-surface-variant transition-colors"
+            className="py-2 px-4 bg-white border border-slate-200 text-slate-700 rounded-xl text-xs font-medium hover:bg-slate-100 transition-colors cursor-pointer"
           >
             Close
           </button>

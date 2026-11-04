@@ -161,20 +161,20 @@ export default function MobileApp({ isTablet = false }) {
             <span className="text-[10px] mt-0.5 tracking-normal">Services</span>
           </button>
 
-          {/* Tab 3: Center Elevated Book Test Button */}
+          {/* Tab 3: Book Test (Normal icon like all other tabs) */}
           <button
             type="button"
             onClick={() => handleTabChange('book')}
-            className="flex flex-col items-center justify-center -mt-4 text-on-primary group cursor-pointer outline-none focus:outline-none border-0"
+            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all cursor-pointer outline-none focus:outline-none border-0 ${
+              activeTab === 'book'
+                ? 'text-primary font-bold'
+                : 'text-slate-500 hover:text-primary'
+            }`}
           >
-            <div className={`w-11 h-11 rounded-full text-white shadow-[0_4px_12px_rgba(30,58,138,0.35)] flex items-center justify-center transition-all active:scale-95 ${
-              activeTab === 'book' ? 'bg-secondary ring-2 ring-primary/20' : 'bg-primary hover:bg-secondary'
-            }`}>
-              <span className="material-symbols-outlined text-[22px]">calendar_month</span>
-            </div>
-            <span className="text-[10px] text-primary mt-0.5 font-bold">
-              Book Test
+            <span className={`material-symbols-outlined text-[22px] leading-none ${activeTab === 'book' ? 'material-symbols-fill' : ''}`}>
+              calendar_month
             </span>
+            <span className="text-[10px] mt-0.5 tracking-normal">Book Test</span>
           </button>
 
           {/* Tab 4: Reports */}

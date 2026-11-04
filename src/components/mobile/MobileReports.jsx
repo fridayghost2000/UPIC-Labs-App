@@ -10,7 +10,7 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
       test: '10-Panel Rapid Urine Screen (DOT Protocol)',
       date: 'Nov 4, 2026',
       status: 'In Analysis',
-      statusColor: 'bg-surface-container text-primary',
+      statusColor: 'bg-blue-50 text-primary border border-blue-200/60',
       result: 'Pending Final GC-MS Confirmatory',
       mro: 'Dr. Evelyn Reed, MD (Review In-Progress)',
       standards: 'AABB & SAMHSA Standards',
@@ -27,7 +27,7 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
       test: 'Court-Admissible Legal DNA Paternity',
       date: 'Oct 28, 2026',
       status: 'Released / Verified',
-      statusColor: 'bg-surface-container-low text-status-compliant',
+      statusColor: 'bg-emerald-50 text-status-compliant border border-emerald-200/60',
       result: '99.9994% Probability of Paternity (Positive)',
       mro: 'Forensic Director H. Vance, PhD',
       standards: 'AABB Accredited • Notarized Finding',
@@ -43,7 +43,7 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
       test: 'Federal DOT 5-Panel Safety Screen (FMCSA)',
       date: 'Oct 15, 2026',
       status: 'Released / Verified',
-      statusColor: 'bg-surface-container-low text-status-compliant',
+      statusColor: 'bg-emerald-50 text-status-compliant border border-emerald-200/60',
       result: 'Verified Negative / DOT Compliant',
       mro: 'Dr. Raymond Scott, MD, MRO #4491',
       standards: '49 CFR Part 40 DOT Standard',
@@ -65,16 +65,7 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
     <div className="flex flex-col w-full px-4 py-3 pb-8 space-y-3">
       {/* Header */}
       <div>
-        <div className="flex items-center gap-1.5 mb-1">
-          <span className="font-label-caps text-[10px] text-primary tracking-wider uppercase font-bold">
-            HIPAA Compliant Portal
-          </span>
-          <span className="text-slate-300 text-[10px]">•</span>
-          <span className="text-[10px] text-status-compliant font-bold">
-            ● 256-Bit Encrypted
-          </span>
-        </div>
-        <h2 className="text-lg font-bold text-on-surface tracking-tight">
+        <h2 className="text-base font-bold text-on-surface tracking-tight">
           Diagnostic Reports &amp; Custody
         </h2>
         <p className="text-xs text-on-surface-variant mt-0.5">
@@ -84,12 +75,12 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
 
       {/* Specimen Search Bar */}
       <div className="bg-surface-card rounded-2xl p-3 border border-border-subtle shadow-sm">
-        <label className="text-[10px] font-bold text-on-surface-variant uppercase block mb-1">
+        <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">
           Track Specimen Barcode or ID
         </label>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           <div className="relative flex-1">
-            <span className="material-symbols-outlined absolute left-2.5 top-2 text-on-surface-variant text-[18px]">
+            <span className="material-symbols-outlined absolute left-2.5 top-2 text-slate-400 text-[16px]">
               search
             </span>
             <input
@@ -97,12 +88,12 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
               placeholder="e.g. UPIC-8842-DK"
               value={searchId}
               onChange={(e) => setSearchId(e.target.value)}
-              className="w-full pl-8 pr-2 py-1.5 rounded-xl border border-border-subtle bg-surface text-xs font-mono uppercase focus:outline-none focus:border-primary"
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl border border-border-subtle bg-surface text-xs font-mono uppercase focus:outline-none focus:border-primary text-slate-800 placeholder:text-slate-400"
             />
           </div>
           <button
             type="button"
-            className="px-3 py-1.5 bg-primary text-white rounded-xl text-xs font-bold hover:bg-secondary transition-colors"
+            className="px-3.5 py-1.5 bg-primary text-white rounded-xl text-xs font-semibold hover:bg-secondary transition-colors shadow-sm cursor-pointer shrink-0"
           >
             Lookup
           </button>
@@ -111,103 +102,117 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
 
       {/* Active Specimen Summary Card */}
       {currentActive && (
-        <div className="bg-surface-card rounded-2xl p-space-md border border-border-subtle shadow-sm mb-4 space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-border-subtle">
+        <div className="bg-surface-card rounded-2xl p-3.5 border border-border-subtle shadow-sm mb-1 space-y-2.5">
+          {/* Header row */}
+          <div className="flex items-center justify-between pb-2 border-b border-border-subtle/80">
             <div>
-              <span className="text-[10px] font-label-caps text-on-surface-variant uppercase font-bold block">
+              <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">
                 Target Record
               </span>
-              <span className="font-mono text-headline-sm text-primary font-bold">
+              <span className="font-mono text-sm font-bold text-primary">
                 #{currentActive.id}
               </span>
             </div>
-            <span className={`px-2.5 py-1 rounded-full text-[11px] font-label-caps font-bold uppercase ${currentActive.statusColor}`}>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${currentActive.statusColor}`}>
               {currentActive.status}
             </span>
           </div>
 
+          {/* Test Name & Standards */}
           <div>
-            <h3 className="font-headline-sm text-[16px] font-bold text-on-surface">
+            <h3 className="text-sm font-semibold text-slate-800 leading-snug">
               {currentActive.test}
             </h3>
-            <p className="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-              Specimen Received: <strong className="text-on-surface">{currentActive.date}</strong> • {currentActive.standards}
+            <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5 flex-wrap">
+              <span>Specimen Received: <strong className="font-semibold text-slate-700">{currentActive.date}</strong></span>
+              <span className="text-slate-300">•</span>
+              <span>{currentActive.standards}</span>
             </p>
           </div>
 
-          <div className="p-3 bg-surface-canvas rounded-xl border border-border-subtle">
-            <span className="text-[10px] font-label-caps text-on-surface-variant uppercase block font-bold mb-1">
+          {/* Determination Box */}
+          <div className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-100">
+            <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mb-0.5">
               Physician / MRO Determination
             </span>
-            <div className="font-headline-sm text-[15px] font-semibold text-primary">
+            <div className="text-xs font-semibold text-primary">
               {currentActive.result}
             </div>
-            <div className="text-[11px] text-on-surface-variant mt-0.5">
+            <div className="text-[10px] text-slate-500 mt-0.5">
               Certified by: {currentActive.mro}
             </div>
           </div>
 
           {/* Quick Action row */}
-          <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="flex items-center gap-2 pt-1">
             <button
               type="button"
               onClick={() => setSelectedReport(currentActive)}
-              className="flex-1 py-2 px-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors shadow-sm cursor-pointer"
+              className="flex-1 py-2 px-3 bg-primary text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors shadow-sm cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[16px]">description</span>
-              <span>View Certified Certificate</span>
+              <span className="material-symbols-outlined text-[15px]">description</span>
+              <span>View Certificate</span>
             </button>
             <button
               type="button"
               onClick={onOpenCustodyForm}
-              className="py-2 px-3 bg-surface-container text-primary rounded-xl font-label-md text-label-md font-bold hover:bg-surface-variant transition-colors flex items-center gap-1 cursor-pointer"
+              className="py-2 px-3 bg-blue-50/80 border border-blue-100 text-primary rounded-xl text-xs font-semibold hover:bg-blue-100/80 transition-colors flex items-center justify-center gap-1 cursor-pointer shrink-0"
             >
-              <span className="material-symbols-outlined text-[16px]">verified_user</span>
+              <span className="material-symbols-outlined text-[15px]">verified_user</span>
               <span>Custody Form</span>
             </button>
           </div>
         </div>
       )}
 
-      {/* Recent Laboratory Records History */}
+      {/* Recent Laboratory Records History - Minimalist Selector */}
       <div>
-        <div className="flex items-center justify-between mb-2">
-          <span className="font-headline-sm text-[15px] font-bold text-on-surface">
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-xs font-bold text-slate-700 uppercase tracking-wide">
             Authorized Account Records
           </span>
-          <span className="text-[11px] font-label-caps uppercase text-secondary font-bold">
+          <span className="text-[10px] font-semibold uppercase text-slate-400">
             {sampleReports.length} Available
           </span>
         </div>
 
-        <div className={isTablet ? "grid grid-cols-2 gap-3" : "space-y-2.5"}>
+        <div className={isTablet ? "grid grid-cols-3 gap-2" : "space-y-1.5"}>
           {sampleReports.map((item) => (
             <div
               key={item.id}
               onClick={() => setSearchId(item.id)}
-              className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+              className={`px-3 py-2 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2 ${
                 currentActive?.id === item.id
-                  ? 'bg-surface-card border-primary shadow-sm'
-                  : 'bg-surface-card border-border-subtle hover:bg-surface-container-low'
+                  ? 'bg-blue-50/50 border-primary shadow-xs'
+                  : 'bg-white border-slate-200/80 hover:bg-slate-50'
               }`}
             >
-              <div className="min-w-0 pr-2">
-                <div className="flex items-center gap-2 mb-0.5">
-                  <span className="font-mono text-body-sm font-bold text-primary">#{item.id}</span>
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-label-caps font-bold uppercase ${item.statusColor}`}>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs font-bold text-primary shrink-0">
+                    #{item.id}
+                  </span>
+                  <span className={`px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wide shrink-0 ${item.statusColor}`}>
                     {item.status}
                   </span>
                 </div>
-                <div className="font-semibold text-body-sm text-on-surface truncate">
+                <div className="font-medium text-xs text-slate-700 truncate mt-0.5">
                   {item.test}
                 </div>
-                <div className="text-[11px] text-on-surface-variant">
-                  {item.date} • {item.result}
-                </div>
               </div>
-              <span className="material-symbols-outlined text-outline-variant text-[20px] shrink-0">
-                chevron_right
-              </span>
+
+              <div className="flex items-center gap-1 shrink-0">
+                <span className="text-[10px] text-slate-400 font-medium">
+                  {item.date}
+                </span>
+                <span
+                  className={`material-symbols-outlined text-[16px] transition-transform ${
+                    currentActive?.id === item.id ? 'text-primary' : 'text-slate-300'
+                  }`}
+                >
+                  chevron_right
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -221,14 +226,14 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Certificate Header */}
-            <div className="p-4 bg-primary text-on-primary flex items-center justify-between">
+            <div className="p-3.5 bg-primary text-white flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[24px] text-tertiary-fixed">verified</span>
+                <span className="material-symbols-outlined text-[20px] text-amber-300">verified</span>
                 <div>
-                  <div className="font-headline-sm text-[16px] font-bold text-on-primary">
+                  <div className="text-xs font-bold text-white">
                     Official Diagnostic Laboratory Certificate
                   </div>
-                  <div className="font-body-sm text-[11px] text-surface-container opacity-90">
+                  <div className="text-[10px] text-blue-100">
                     UPIC Labs • London KY Facility • CLIA / SAMHSA
                   </div>
                 </div>
@@ -236,48 +241,48 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
               <button
                 type="button"
                 onClick={() => setSelectedReport(null)}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-[18px]">close</span>
+                <span className="material-symbols-outlined text-[16px]">close</span>
               </button>
             </div>
 
             {/* Certificate Body */}
-            <div className="p-4 overflow-y-auto space-y-3.5 text-on-surface text-body-sm text-[12px]">
-              <div className="border-b border-border-subtle pb-3 flex justify-between items-center">
+            <div className="p-3.5 overflow-y-auto space-y-3 text-on-surface text-xs">
+              <div className="border-b border-border-subtle pb-2.5 flex justify-between items-center">
                 <div>
-                  <span className="text-[10px] font-label-caps uppercase text-on-surface-variant block">Record Number</span>
-                  <span className="font-mono text-[16px] font-bold text-primary">#{selectedReport.id}</span>
+                  <span className="text-[9px] uppercase tracking-wider text-slate-400 font-medium block">Record Number</span>
+                  <span className="font-mono text-sm font-bold text-primary">#{selectedReport.id}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-label-caps uppercase text-on-surface-variant block">Date Released</span>
-                  <span className="font-bold text-on-surface">{selectedReport.date}</span>
+                  <span className="text-[9px] uppercase tracking-wider text-slate-400 font-medium block">Date Released</span>
+                  <span className="font-semibold text-xs text-on-surface">{selectedReport.date}</span>
                 </div>
               </div>
 
               <div>
-                <span className="text-[10px] font-label-caps uppercase text-on-surface-variant block font-bold mb-1">
+                <span className="text-[9px] uppercase tracking-wider text-slate-400 font-medium block mb-0.5">
                   Assay / Test Methodology
                 </span>
-                <span className="font-semibold text-on-surface text-[14px]">{selectedReport.test}</span>
+                <span className="font-semibold text-slate-800 text-xs">{selectedReport.test}</span>
               </div>
 
               {/* Cutoff / Panel Table */}
               <div className="border border-border-subtle rounded-xl overflow-hidden">
                 <table className="w-full text-left">
-                  <thead className="bg-surface-canvas text-[11px] font-label-caps uppercase text-on-surface-variant border-b border-border-subtle">
+                  <thead className="bg-slate-50 text-[10px] uppercase tracking-wider font-semibold text-slate-500 border-b border-border-subtle">
                     <tr>
                       <th className="p-2">Analyte / Marker</th>
-                      <th className="p-2">Cutoff Level</th>
-                      <th className="p-2 text-right">Result Finding</th>
+                      <th className="p-2">Cutoff</th>
+                      <th className="p-2 text-right">Result</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-border-subtle text-[12px]">
+                  <tbody className="divide-y divide-border-subtle text-[11px]">
                     {selectedReport.panels.map((p, idx) => (
-                      <tr key={idx} className="hover:bg-surface-container-low">
-                        <td className="p-2 font-medium">{p.drug}</td>
-                        <td className="p-2 text-on-surface-variant">{p.cutoff}</td>
-                        <td className="p-2 text-right font-bold text-status-compliant">{p.status}</td>
+                      <tr key={idx} className="hover:bg-slate-50/50">
+                        <td className="p-2 font-medium text-slate-800">{p.drug}</td>
+                        <td className="p-2 text-slate-500">{p.cutoff}</td>
+                        <td className="p-2 text-right font-semibold text-status-compliant">{p.status}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -285,37 +290,37 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
               </div>
 
               {/* Certification Stamp */}
-              <div className="p-3 bg-surface-canvas rounded-xl border border-border-subtle flex items-center justify-between">
+              <div className="p-2.5 bg-slate-50/80 rounded-xl border border-border-subtle flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-label-caps uppercase text-on-surface-variant font-bold block">
+                  <span className="text-[9px] uppercase tracking-wider text-slate-400 font-medium block">
                     Medical Review Officer Sign-Off
                   </span>
-                  <span className="font-semibold text-on-surface">{selectedReport.mro}</span>
-                  <div className="text-[10px] text-status-compliant font-bold mt-0.5">
+                  <span className="font-semibold text-xs text-slate-800">{selectedReport.mro}</span>
+                  <div className="text-[9px] text-status-compliant font-medium mt-0.5">
                     ✓ Cryptographically Signed &amp; Tamper-Evident
                   </div>
                 </div>
-                <div className="w-14 h-14 rounded-full border-2 border-primary-container/30 flex flex-col items-center justify-center text-center p-1 bg-white">
-                  <span className="material-symbols-outlined text-[18px] text-primary">verified</span>
-                  <span className="text-[7px] font-bold uppercase tracking-tighter text-primary">UPIC SEAL</span>
+                <div className="w-12 h-12 rounded-full border border-primary/20 flex flex-col items-center justify-center text-center p-1 bg-white shadow-xs shrink-0">
+                  <span className="material-symbols-outlined text-[15px] text-primary">verified</span>
+                  <span className="text-[6px] font-bold uppercase tracking-tight text-primary">UPIC SEAL</span>
                 </div>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="p-3 bg-surface-canvas border-t border-border-subtle flex items-center gap-2">
+            <div className="p-2.5 bg-slate-50 border-t border-border-subtle flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="flex-1 py-2 px-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors"
+                className="flex-1 py-2 px-3 bg-primary text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-secondary transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-[16px]">download</span>
-                <span>Download Certified PDF</span>
+                <span className="material-symbols-outlined text-[15px]">download</span>
+                <span>Download PDF</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedReport(null)}
-                className="py-2 px-4 bg-surface-container text-on-surface rounded-xl font-label-md text-label-md font-semibold hover:bg-surface-variant transition-colors"
+                className="py-2 px-3.5 bg-white border border-border-subtle text-slate-700 rounded-xl text-xs font-medium hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 Close
               </button>

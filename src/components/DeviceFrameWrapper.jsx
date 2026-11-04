@@ -97,7 +97,7 @@ export default function DeviceFrameWrapper() {
             {/* Status Icons: Cellular, Wifi, Battery */}
             <div className="w-16 flex items-center justify-end gap-1.5 text-slate-800 pr-1 shrink-0 overflow-hidden">
               <span className="material-symbols-outlined text-[15px] leading-none shrink-0">signal_cellular_alt</span>
-              <span className="material-symbols-outlined text-[15px] leading-none shrink-0">wifi</span>
+              <span className="material-symbols-outlined !text-[11px] leading-none shrink-0" style={{ fontSize: '11px' }}>wifi</span>
               <div className="w-5 h-2.5 border border-slate-700 rounded-sm p-0.5 flex items-center shrink-0">
                 <div className="w-full h-full bg-slate-800 rounded-2xs"></div>
               </div>
