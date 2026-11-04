@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-on-surface": "#eef0ff", "secondary-container": "#4069f2", "on-surface-variant": "#444651", "tertiary-container": "#5c3800", "surface-container": "#eaedff", "inverse-surface": "#283044", "on-error": "#ffffff", "on-surface": "#131b2e", "surface-container-low": "#f2f3ff", "surface-bright": "#faf8ff", "tertiary-fixed-dim": "#ffb95f", "error": "#ba1a1a", "surface-card": "#FFFFFF", "on-primary-container": "#90a8ff", "surface-container-lowest": "#ffffff", "surface-container-high": "#e2e7ff", "status-compliant": "#059669", "on-tertiary-fixed-variant": "#653e00", "tertiary": "#3e2400", "outline-variant": "#c5c5d3", "primary": "#00236f", "tertiary-fixed": "#ffddb8", "on-tertiary-fixed": "#2a1700", "on-primary-fixed-variant": "#264191", "text-muted": "#64748B", "surface-variant": "#dae2fd", "surface-tint": "#4059aa", "status-alert": "#DC2626", "primary-container": "#1e3a8a", "on-secondary": "#ffffff", "on-primary": "#ffffff", "background": "#faf8ff", "surface": "#faf8ff", "primary-fixed-dim": "#b6c4ff", "surface-dim": "#d2d9f4", "secondary": "#1d4ed8", "on-secondary-fixed-variant": "#0039b5", "error-container": "#ffdad6", "border-subtle": "#E2E8F0", "inverse-primary": "#b6c4ff", "brand-accent-glow": "#FDE68A", "status-pending": "#D97706", "surface-container-highest": "#dae2fd", "on-tertiary": "#ffffff", "on-background": "#131b2e", "surface-canvas": "#F8FAFC", "outline": "#757682", "on-secondary-container": "#fffbff", "on-secondary-fixed": "#001551", "secondary-fixed-dim": "#b7c4ff", "primary-fixed": "#dce1ff", "secondary-fixed": "#dce1ff", "on-tertiary-container": "#ef9900", "on-primary-fixed": "#00164e", "on-error-container": "#93000a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-desktop": "2rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "space-xs": "0.25rem", "margin": "1rem", "space-sm": "0.5rem", "gutter-tablet": "1.5rem", "space-xl": "2.25rem", "gutter": "1rem", "margin-tablet": "2rem" }, fontFamily: { "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "badge-status": ["Inter"], "display-hero": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-caps": ["Inter"], "body-sm": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "body-md": ["Inter"], "display-hero-mobile": ["Plus Jakarta Sans"] }, fontSize: { "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "badge-status": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-hero": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-hero-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen selection:bg-surface-variant"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold text-primary-container truncate">UPIC Labs</span><span class="font-label-caps text-label-caps uppercase px-1.5 py-0.5 rounded bg-surface-container text-primary-container font-semibold tracking-wider hidden xs:inline-block">CLINICAL</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px] leading-none text-secondary">location_on</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">London, KY</span><span class="text-outline-variant text-[10px]">•</span><a class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-container-high text-primary hover:bg-surface-variant transition-colors min-h-[20px]" href="tel:6062600413"><span class="w-1.5 h-1.5 rounded-full bg-status-compliant animate-pulse"></span><span class="font-label-caps text-label-caps text-primary tracking-normal font-bold">24/7 Hotline</span></a></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-status-alert"></span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 ml-1" src="https://lh3.googleusercontent.com/aida/AEtjO1Usfy2G4i1T5jBsL2mHWpNDgZ9Ag-6gKZTwSsrac39YDTSB0FrFO51okZaAVLYGW-uOvsa1fndZZLB5rjr7LbhOr5L40ZWREDqX3ilWd8UsTiWc2-4AUBkr8DQbv42Po-HZwh0QU5Ve7o4iW-Fs0qYWqdVZAq1FAKchpg_JLsa60R_ExwAWcOEFWPvuGBgDgzwC4wac-szTGLuuaFx8Q6VwJKFG6q_4TddneIr8KZE"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- 24/7 On-Call Support & Immediate Dispatch Strip -->
+<div class="px-gutter pt-space-sm pb-space-xs">
+<div class="bg-primary text-on-primary rounded-xl p-space-md shadow-md relative overflow-hidden">
+<!-- Decorative Lab Glow Accent -->
+<div class="absolute -right-10 -bottom-10 w-36 h-36 bg-tertiary-fixed/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-status-compliant animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed tracking-wider uppercase font-bold">24/7 Rapid Response</span>
+</div>
+<div class="font-headline-sm text-headline-sm font-bold text-on-primary leading-tight">
+            (606) 260-0413
+          </div>
+<div class="flex items-center gap-1 text-on-primary-container mt-1">
+<span class="material-symbols-outlined text-[15px] leading-none text-tertiary-fixed">domain</span>
+<span class="font-body-sm text-body-sm truncate text-surface-container">360 Spring St, Ste 2 • London, KY</span>
+</div>
+</div>
+<a class="shrink-0 flex items-center gap-1.5 px-3 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg font-label-md text-label-md hover:bg-tertiary-fixed-dim transition-transform active:scale-95 shadow-sm" href="tel:6062600413">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>Call Now</span>
+</a>
+</div>
+<div class="mt-space-sm pt-2 bg-primary-container/40 rounded-lg px-2.5 py-1.5 flex items-center justify-between text-surface-container-high">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">schedule</span>
+<span class="font-body-sm text-body-sm truncate">Office: Mon–Fri 9:00 AM – 5:00 PM</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-tertiary-fixed font-bold shrink-0">Walk-Ins OK</span>
+</div>
+</div>
+</div>
+<!-- Real-time Specimen Tracking Card -->
+<div class="px-gutter py-space-xs">
+<div class="bg-surface-card rounded-xl shadow-sm p-space-md">
+<div class="flex items-center justify-between gap-space-xs mb-space-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold">Live Specimen Custody</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-high font-badge-status text-badge-status text-primary font-bold">ST-47</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface font-bold truncate">#UPIC-8842-DK</div>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container font-label-caps text-label-caps text-primary uppercase font-bold shrink-0">
+          In Analysis
+        </span>
+</div>
+<div class="bg-surface-canvas rounded-lg p-2.5 mb-space-sm">
+<div class="flex justify-between items-center mb-1 text-on-surface">
+<span class="font-body-sm text-body-sm font-semibold truncate">10-Panel Rapid Urine Screen (DOT Protocol)</span>
+<span class="font-label-caps text-label-caps text-status-compliant font-bold shrink-0">Seal Verified</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">London Central Laboratory • Received 11:24 AM</div>
+</div>
+<!-- 4-Stage Progress Stepper -->
+<div class="py-1">
+<div class="grid grid-cols-4 gap-1.5 items-center mb-2">
+<div class="h-1.5 rounded-full bg-status-compliant"></div>
+<div class="h-1.5 rounded-full bg-status-compliant"></div>
+<div class="h-1.5 rounded-full bg-primary-container relative overflow-hidden">
+<div class="absolute inset-0 bg-tertiary-fixed opacity-70 animate-pulse"></div>
+</div>
+<div class="h-1.5 rounded-full bg-surface-container-high"></div>
+</div>
+<div class="grid grid-cols-4 text-center font-label-caps text-label-caps text-on-surface-variant">
+<span class="text-status-compliant font-bold">Collected</span>
+<span class="text-status-compliant font-bold">Logged</span>
+<span class="text-primary font-bold">Analysis</span>
+<span class="text-outline">Released</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px] text-status-compliant">verified_user</span>
+<span>AABB &amp; SAMHSA Standards</span>
+</div>
+<button class="text-secondary font-label-md text-label-md hover:text-primary transition-colors flex items-center gap-0.5" type="button">
+<span>Custody Form</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary 4-Grid Action Matrix -->
+<div class="px-gutter py-space-xs">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Diagnostic Portals</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase font-bold tracking-wider">Direct Access</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Book Specimen Test -->
+<a class="bg-surface-card rounded-xl p-space-md shadow-sm hover:shadow transition-all group flex flex-col justify-between" href="#">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">calendar_add_on</span>
+</div>
+<span class="font-badge-status text-badge-status px-1.5 py-0.5 rounded bg-surface-container-low text-primary font-bold uppercase">Rapid</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">Book a Test</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Urine, hair, saliva, or blood scheduling</div>
+</div>
+</a>
+<!-- Track Specimen -->
+<a class="bg-surface-card rounded-xl p-space-md shadow-sm hover:shadow transition-all group flex flex-col justify-between" href="#">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[22px]">qr_code_scanner</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-status-compliant"></span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">Track Status</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Real-time legal custody logs</div>
+</div>
+</a>
+<!-- Secure Results -->
+<a class="bg-surface-card rounded-xl p-space-md shadow-sm hover:shadow transition-all group flex flex-col justify-between" href="#">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+<span class="font-badge-status text-badge-status px-1.5 py-0.5 rounded bg-surface-container-low text-on-surface-variant font-semibold">HIPAA</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">View Results</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Notarized &amp; physician approved</div>
+</div>
+</a>
+<!-- Employer Portal -->
+<a class="bg-surface-card rounded-xl p-space-md shadow-sm hover:shadow transition-all group flex flex-col justify-between" href="#">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-tertiary-container group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+<span class="material-symbols-outlined text-[22px]">corporate_fare</span>
+</div>
+<span class="font-badge-status text-badge-status px-1.5 py-0.5 rounded bg-surface-container-low text-primary font-semibold">B2B</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">Employer Hub</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Manage workforce random rosters</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Specialized Testing Services Header -->
+<div class="px-gutter pt-space-md pb-space-xs flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold block">Testing Capabilities</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Accredited diagnostic suites based in London, KY</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold uppercase tracking-wider">3 Suites</span>
+</div>
+<!-- Specialized Clinical Cards Vertical Stack -->
+<div class="px-gutter py-space-xs flex flex-col gap-space-sm">
+<!-- Workplace Drug & Alcohol -->
+<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 w-full relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up clinical laboratory equipment with pristine pipettes, chemical testing tubes and blue sterile lighting representing workplace drug screening precision in London Kentucky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuzjOeUF6sJAnFtMthpxiwReXQWfvka53LShWl7N3SBDXarD01vamW27vxCZZEjyCSuYEwFT3yKi6gzRrYie4ylixgS4NGU-oSFI7431RRiT2mpeZP8Nk1n5ouF070GvCPqw-muevf-DUJ3iLFc4dbsZ0WXfSKp6eghKLvmMflOS7TBP7MAywB1KRq_PJ3hbnVAJqfo1-G2zkr091LAtGiFFNPWewCgPxPviLyTQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/20 to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-badge-status text-badge-status uppercase tracking-wide font-bold shadow-sm">
+            Workforce Safety
+          </span>
+</div>
+</div>
+<div class="p-space-md -mt-4 relative z-10 flex flex-col">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">
+          Workplace Drug &amp; Alcohol Screening
+        </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Customized corporate testing plans. Routine screening cuts workplace injuries by up to <strong class="text-on-surface font-semibold">47%</strong> and severe industrial incidents by <strong class="text-on-surface font-semibold">40%</strong>.
+        </p>
+<div class="mt-space-sm flex flex-wrap gap-1.5">
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-primary font-semibold">5 &amp; 10 Panel Rapid</span>
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-primary font-semibold">Hair Follicle</span>
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-primary font-semibold">Breath Alcohol</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold">Same-Day Negative Reports</span>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary font-bold" type="button">
+<span>Explore Panels</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Court-Ready DNA Testing -->
+<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="h-32 w-full relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High tech genetic sequencing equipment with double helix visuals and clinical documentation representing legal court admissible DNA paternity testing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Zi4P2EVhGEJmIjHb0j2FXVisSVMAjNWOx0EttoAOgpaSASi_JiyyorO6bnoEMHxly7tKprj8u22gPq6e0rNqb0Ht0sliW11O0DV6efxdOgSdhnZEjbdj4gPkJX-ibwYCSaEjxQ87DIlahHGoE-a8MJsfXV8abvT8W0DBAPLX1YfH0GSKHq2Ik7QsYpatupiCrGL5TfBeiOu2eUmKbA3CDMttTO10JsuQUImQOQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-card via-surface-card/20 to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-badge-status text-badge-status uppercase tracking-wide font-bold shadow-sm">
+            Court Admissible
+          </span>
+</div>
+</div>
+<div class="p-space-md -mt-4 relative z-10 flex flex-col">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">
+          Court-Ready DNA Paternity Testing
+        </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Strict evidentiary chain-of-custody protocols for child support, custody litigation, and immigration hearings. 99.99%+ statistical accuracy guaranteed.
+        </p>
+<div class="mt-space-sm flex flex-wrap gap-1.5">
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-tertiary-container font-semibold">Legal Custody Seals</span>
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-tertiary-container font-semibold">Notarized Findings</span>
+<span class="font-badge-status text-badge-status px-2 py-0.5 rounded-full bg-surface-container text-tertiary-container font-semibold">Cheek Swab Non-Invasive</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold">Confidential Handling</span>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary font-bold" type="button">
+<span>Schedule Legal DNA</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Federal DOT Compliance Testing -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-md flex flex-col">
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">Federal DOT Compliance</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Mandated 49 CFR Part 40 testing</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-low font-badge-status text-badge-status text-status-compliant font-bold uppercase shrink-0">
+          DOT Ready
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+        Comprehensive certified screening programs covering all federal transportation agencies with certified Medical Review Officer (MRO) review.
+      </p>
+<!-- Federal Agency Badges Grid -->
+<div class="grid grid-cols-3 gap-1.5 mb-space-sm">
+<div class="bg-surface-canvas rounded p-1.5 text-center">
+<span class="font-label-caps text-label-caps font-bold text-primary block">DOT / FMCSA</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Commercial Trucking</span>
+</div>
+<div class="bg-surface-canvas rounded p-1.5 text-center">
+<span class="font-label-caps text-label-caps font-bold text-primary block">FAA &amp; FTA</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Aviation &amp; Transit</span>
+</div>
+<div class="bg-surface-canvas rounded p-1.5 text-center">
+<span class="font-label-caps text-label-caps font-bold text-primary block">FRA &amp; PHMSA</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Rail &amp; Pipeline</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant font-bold">US Coast Guard Certified</span>
+<button class="px-3 py-1.5 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-secondary transition-colors" type="button">
+          Audit Enrollment
+        </button>
+</div>
+</div>
+</div>
+<!-- Physical Facility Location & Walk-In Banner -->
+<div class="px-gutter pt-space-sm pb-space-lg">
+<div class="bg-surface-card rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">pin_drop</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">London Testing Facility</span>
+</div>
+<span class="font-badge-status text-badge-status text-status-compliant bg-surface-container px-2 py-0.5 rounded-full font-bold">
+          Open Today
+        </span>
+</div>
+<!-- Facility Map Location Component -->
+<div class="w-full h-36 bg-cover bg-center rounded-lg shadow-inner relative flex items-end p-2.5" data-location="360 Spring Street London KY 40741" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZkFvaDCDtkTMQjBqKdwfNRMoNwDOG4XF6Ov8KKzH9fiJopvUH_4I7sybERnCrgi-a-Jq3BTzdNgaBGQrim1NphjcxhfwuNYRDac__lZHj6dFskxoylX_NilHU_wP0tmeDBCiblXxMTIfNYsEpCa5wKs4tUC_QVlCmam47aWhtCEYAbgBZuDMq0gCh17xyIsgiOogWwRrQQ8MR6YdTs-y9iJTs_uheAG3Lrsce9w')">
+<div class="bg-surface-card/95 backdrop-blur-md rounded-md p-2 w-full shadow-sm flex items-center justify-between">
+<div class="min-w-0 pr-2">
+<div class="font-label-md text-label-md text-on-surface font-bold truncate">360 Spring St, Suite 2</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">London, KY 40741 • Dedicated Parking</div>
+</div>
+<a class="shrink-0 px-2 py-1 bg-surface-container text-primary rounded font-label-md text-label-md hover:bg-surface-variant transition-colors flex items-center gap-0.5" href="https://maps.google.com/?q=360+Spring+Street+Suite+2+London+KY" target="_blank">
+<span>Map</span>
+<span class="material-symbols-outlined text-[14px]">directions</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="bg-surface-canvas rounded-lg p-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0">door_front</span>
+<div class="min-w-0">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold block">Walk-In Hours</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Mon-Fri 9AM-5PM</span>
+</div>
+</div>
+<div class="bg-surface-canvas rounded-lg p-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container shrink-0">support_agent</span>
+<div class="min-w-0">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold block">After-Hours</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">24/7 On-Call Team</span>
+</div>
+</div>
+</div>
+<!-- Quick Contact Direct Actions -->
+<div class="flex items-center gap-2 pt-1">
+<a class="flex-1 py-2.5 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-bold text-center hover:bg-secondary transition-colors flex items-center justify-center gap-1.5 shadow-sm" href="tel:6062600413">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>(606) 260-0413</span>
+</a>
+<a class="px-3 py-2.5 bg-surface-container text-primary rounded-lg font-label-md text-label-md font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-1" href="mailto:jeffhensley@upiclabs.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Email Lab</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interaction for specimen card refresh state
+    document.addEventListener('DOMContentLoaded', function() {
+      const liveSpecimenBadge = document.querySelector('.bg-status-compliant.animate-pulse');
+      if (liveSpecimenBadge) {
+        liveSpecimenBadge.parentElement.addEventListener('click', function() {
+          this.classList.toggle('opacity-75');
+        });
+      }
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-card/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.06)]" data-active-classes="text-primary-container font-semibold"><div class="flex justify-around items-center h-16 px-gutter max-w-lg mx-auto"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 transition-colors text-primary-container font-semibold" data-path="home-dashboard" href="#"><span class="material-symbols-outlined text-[24px]">home</span><span class="font-label-caps text-label-caps tracking-normal">Home</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant hover:text-primary-container transition-colors" data-path="diagnostic-services" href="#"><span class="material-symbols-outlined text-[24px]">assignment</span><span class="font-label-caps text-label-caps tracking-normal">Services</span></a><a class="flex flex-col items-center justify-center -mt-5 min-w-[56px] min-h-[56px] text-on-primary group" data-path="book-specimen-test" href="#"><div class="w-13 h-13 px-3 py-2.5 rounded-full bg-primary-container text-on-primary shadow-[0_4px_12px_rgba(30,58,138,0.35)] flex items-center justify-center hover:bg-secondary transition-all active:scale-95"><span class="material-symbols-outlined text-[26px]">event_available</span></div><span class="font-label-caps text-label-caps text-primary-container mt-1 font-bold">Book Test</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant hover:text-primary-container transition-colors" data-path="diagnostic-reports" href="#"><span class="material-symbols-outlined text-[24px]">lock</span><span class="font-label-caps text-label-caps tracking-normal">Reports</span></a></div></nav></body></html>
