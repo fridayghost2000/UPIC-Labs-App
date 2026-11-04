@@ -5,13 +5,14 @@ import { Iphone } from './magicui/iphone';
 const getInitialViewMode = () => {
   if (typeof window === 'undefined') return 'desktop';
   const width = window.innerWidth;
+  const height = window.innerHeight;
   const ua = navigator.userAgent || '';
   const isTouchTablet =
-    /iPad|Tablet|Android(?!.*Mobile)/i.test(ua) ||
+    /iPad|Tablet|Android(?!.*Mobile)|CrKey|SmartDisplay/i.test(ua) ||
     (navigator.maxTouchPoints > 1 && width >= 640 && width <= 1366);
 
   if (width < 640) return 'mobile';
-  if ((width >= 640 && width <= 1180) || isTouchTablet) return 'tablet';
+  if ((width >= 640 && width <= 1280) || (width <= 1366 && height <= 850) || isTouchTablet) return 'tablet';
   return 'desktop';
 };
 
@@ -37,14 +38,15 @@ export default function DeviceFrameWrapper() {
   useEffect(() => {
     const checkViewport = () => {
       const width = window.innerWidth;
+      const height = window.innerHeight;
       const ua = navigator.userAgent || '';
       const isTouchTablet =
-        /iPad|Tablet|Android(?!.*Mobile)/i.test(ua) ||
+        /iPad|Tablet|Android(?!.*Mobile)|CrKey|SmartDisplay/i.test(ua) ||
         (navigator.maxTouchPoints > 1 && width >= 640 && width <= 1366);
 
       if (width < 640) {
         setViewMode('mobile');
-      } else if ((width >= 640 && width <= 1180) || isTouchTablet) {
+      } else if ((width >= 640 && width <= 1280) || (width <= 1366 && height <= 850) || isTouchTablet) {
         setViewMode('tablet');
       } else {
         setViewMode('desktop');

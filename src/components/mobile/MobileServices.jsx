@@ -107,13 +107,13 @@ export default function MobileServices({ isTablet = false, onBookTest }) {
         </p>
 
         {/* Filter Chips Scroll */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-2.5">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2.5 -mx-4 px-4 scroll-smooth">
           {categories.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => setFilter(cat.id)}
-              className={`shrink-0 px-3 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+              className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 filter === cat.id
                   ? 'bg-primary text-white shadow-sm'
                   : 'bg-surface-card border border-border-subtle text-on-surface hover:bg-surface-container'

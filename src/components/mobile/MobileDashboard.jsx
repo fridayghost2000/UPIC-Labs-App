@@ -130,7 +130,6 @@ export default function MobileDashboard({
           <span className="text-xs font-bold text-on-surface uppercase tracking-wider">
             Diagnostic Portals
           </span>
-          <span className="text-[10px] text-on-surface-variant font-semibold">Direct Access</span>
         </div>
 
         <div className={`grid gap-2.5 ${isTablet ? 'grid-cols-4 gap-3.5' : 'grid-cols-2'}`}>
@@ -345,7 +344,7 @@ export default function MobileDashboard({
               </div>
 
               <p className="text-[11px] text-on-surface-variant mt-1 leading-snug">
-                FMCSA, FAA, FTA, FRA, PHMSA, and US Coast Guard safety screening programs with certified MRO review.
+                Mandated commercial driver safety screening with certified MRO review.
               </p>
             </div>
 
@@ -381,7 +380,8 @@ export default function MobileDashboard({
         <div className={isTablet ? "grid grid-cols-2 gap-4 items-center pt-1" : "space-y-2.5"}>
           <div className="text-xs text-on-surface-variant">
             <div className="font-semibold text-on-surface">380 Spring St, Suite 2 • London, KY 40741</div>
-            <div className="text-[11px] mt-0.5">Mon–Fri 9AM–5PM • 24/7 Mobile Dispatch Available</div>
+            <div className="text-[11px] mt-1 text-slate-600">Mon–Fri 9AM–5PM</div>
+            <div className="text-[11px] mt-0.5 text-primary font-medium">24/7 Mobile Dispatch Available</div>
           </div>
 
           <div className="flex items-center gap-2 pt-1">

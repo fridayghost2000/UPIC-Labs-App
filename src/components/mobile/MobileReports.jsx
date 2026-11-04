@@ -201,10 +201,7 @@ export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 shrink-0">
-                <span className="text-[10px] text-slate-400 font-medium">
-                  {item.date}
-                </span>
+              <div className="flex items-center shrink-0">
                 <span
                   className={`material-symbols-outlined text-[16px] transition-transform ${
                     currentActive?.id === item.id ? 'text-primary' : 'text-slate-300'
