@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MobileReports({ onOpenCustodyForm }) {
+export default function MobileReports({ isTablet = false, onOpenCustodyForm }) {
   const [searchId, setSearchId] = useState('UPIC-8842-DK');
   const [selectedReport, setSelectedReport] = useState(null);
 
@@ -180,7 +180,7 @@ export default function MobileReports({ onOpenCustodyForm }) {
           </span>
         </div>
 
-        <div className="space-y-2.5">
+        <div className={isTablet ? "grid grid-cols-2 gap-3" : "space-y-2.5"}>
           {sampleReports.map((item) => (
             <div
               key={item.id}

@@ -7,7 +7,7 @@ import CustodyFormModal from './CustodyFormModal';
 import EmployerHubModal from './EmployerHubModal';
 import NotificationsDropdown from './NotificationsDropdown';
 
-export default function MobileApp() {
+export default function MobileApp({ isTablet = false }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home' | 'services' | 'book' | 'reports'
   const [custodyModalOpen, setCustodyModalOpen] = useState(false);
   const [employerHubOpen, setEmployerHubOpen] = useState(false);
@@ -30,49 +30,31 @@ export default function MobileApp() {
   return (
     <div className="relative w-full h-full flex flex-col bg-surface font-body-md text-on-surface overflow-hidden select-none">
       
-      {/* 1. CLEAN APP HEADER (Fixed at top of phone screen) */}
+      {/* 1. CLEAN APP HEADER (Fixed at top of screen) */}
       <header className="sticky top-0 w-full z-30 shrink-0 bg-surface/95 backdrop-blur-md border-b border-border-subtle/50 shadow-[0_1px_4px_rgba(0,0,0,0.03)]">
-        <div className="h-14 px-4 flex items-center justify-between gap-2 w-full">
+        <div className={`h-14 flex items-center justify-between w-full ${isTablet ? 'max-w-5xl mx-auto px-6' : 'px-4'}`}>
           
-          {/* Brand & Location with Official UPIC Logo */}
-          <div className="flex items-center gap-2 min-w-0 flex-1">
+          {/* Brand Logo (Clean Official UPIC Logo) */}
+          <div className="flex items-center gap-3">
             <img
               src="/upic-logo.webp"
-              alt="UPIC Labs Logo"
+              alt="UPIC Labs"
               onClick={() => handleTabChange('home')}
-              className="h-8 w-auto object-contain shrink-0 cursor-pointer"
+              className="h-8 w-auto object-contain cursor-pointer transition-transform active:scale-95"
             />
-            <div className="flex flex-col min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span
-                  onClick={() => handleTabChange('home')}
-                  className="text-[14px] font-bold text-primary-container truncate cursor-pointer hover:text-primary transition-colors leading-tight"
-                >
-                  UPIC Labs
-                </span>
-                <span className="text-[8.5px] font-bold uppercase px-1.5 py-0.2 rounded bg-blue-100 text-primary tracking-wider inline-block">
-                  CLINICAL
-                </span>
+            {isTablet && (
+              <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50/80 border border-blue-100 text-[11px] text-primary font-semibold">
+                <span className="material-symbols-outlined text-[13px] text-primary">location_on</span>
+                <span>London, KY HQ</span>
+                <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-status-compliant"></span>
+                <span>24/7 Hotline</span>
               </div>
-              <div className="flex items-center gap-1 text-on-surface-variant text-[10.5px] leading-tight mt-0.5">
-                <span className="material-symbols-outlined text-[12px] text-secondary">
-                  location_on
-                </span>
-                <span className="truncate">London, KY</span>
-                <span className="text-slate-300">•</span>
-                <a
-                  className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-blue-50 text-primary hover:bg-blue-100 transition-colors"
-                  href="tel:6062600413"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-status-compliant animate-pulse"></span>
-                  <span className="text-[9.5px] font-bold">24/7 Hotline</span>
-                </a>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Right Header: Alerts & Clean Initials Profile */}
-          <div className="flex items-center gap-1 shrink-0 relative">
+          <div className="flex items-center gap-2 shrink-0 relative">
             <button
               type="button"
               aria-label="Notifications"
@@ -102,44 +84,50 @@ export default function MobileApp() {
         </div>
       </header>
 
-      {/* 2. SCROLLABLE INNER VIEWPORT (Smooth scrolling, zero scrollbar clutter) */}
+      {/* 2. SCROLLABLE INNER VIEWPORT */}
       <main id="mobile-scroll-container" className="flex-1 overflow-y-auto no-scrollbar relative w-full bg-surface">
-        {activeTab === 'home' && (
-          <MobileDashboard
-            onNavigateTab={handleTabChange}
-            onOpenBooking={() => handleTabChange('book')}
-            onOpenTracker={() => handleTabChange('reports')}
-            onOpenResults={() => handleTabChange('reports')}
-            onOpenEmployerHub={() => setEmployerHubOpen(true)}
-            onOpenCustodyForm={() => setCustodyModalOpen(true)}
-            onSelectServiceCategory={handleBookTestCategory}
-          />
-        )}
+        <div className={`w-full ${isTablet ? 'max-w-5xl mx-auto' : ''}`}>
+          {activeTab === 'home' && (
+            <MobileDashboard
+              isTablet={isTablet}
+              onNavigateTab={handleTabChange}
+              onOpenBooking={() => handleTabChange('book')}
+              onOpenTracker={() => handleTabChange('reports')}
+              onOpenResults={() => handleTabChange('reports')}
+              onOpenEmployerHub={() => setEmployerHubOpen(true)}
+              onOpenCustodyForm={() => setCustodyModalOpen(true)}
+              onSelectServiceCategory={handleBookTestCategory}
+            />
+          )}
 
-        {activeTab === 'services' && (
-          <MobileServices
-            onBookTest={handleBookTestCategory}
-          />
-        )}
+          {activeTab === 'services' && (
+            <MobileServices
+              isTablet={isTablet}
+              onBookTest={handleBookTestCategory}
+            />
+          )}
 
-        {activeTab === 'book' && (
-          <MobileBookTest
-            initialCategory={selectedServiceCategory}
-            onComplete={() => handleTabChange('home')}
-            onCancel={() => handleTabChange('home')}
-          />
-        )}
+          {activeTab === 'book' && (
+            <MobileBookTest
+              isTablet={isTablet}
+              initialCategory={selectedServiceCategory}
+              onComplete={() => handleTabChange('home')}
+              onCancel={() => handleTabChange('home')}
+            />
+          )}
 
-        {activeTab === 'reports' && (
-          <MobileReports
-            onOpenCustodyForm={() => setCustodyModalOpen(true)}
-          />
-        )}
+          {activeTab === 'reports' && (
+            <MobileReports
+              isTablet={isTablet}
+              onOpenCustodyForm={() => setCustodyModalOpen(true)}
+            />
+          )}
+        </div>
       </main>
 
-      {/* 3. PINNED BOTTOM NAVIGATION (Clean iOS/Material 3, no ugly box outlines) */}
-      <nav className="sticky bottom-0 left-0 right-0 z-30 shrink-0 bg-white/95 backdrop-blur-md shadow-[0_-2px_10px_rgba(0,0,0,0.05)] border-t border-slate-200">
-        <div className="flex justify-around items-center h-14 px-3 w-full">
+      {/* 3. PINNED BOTTOM NAVIGATION */}
+      <nav className="sticky bottom-0 left-0 right-0 z-30 shrink-0 bg-white/95 backdrop-blur-md">
+        <div className={`flex justify-around items-center h-14 ${isTablet ? 'max-w-md mx-auto px-4' : 'w-full px-3'}`}>
           
           {/* Tab 1: Home */}
           <button
@@ -205,6 +193,11 @@ export default function MobileApp() {
             <span className="text-[10px] mt-0.5 tracking-normal">Reports</span>
           </button>
 
+        </div>
+
+        {/* Integrated iOS Home Indicator (only on phone form factor) */}
+        <div className={`w-full pb-2 pt-0.5 flex items-center justify-center pointer-events-none ${isTablet ? 'hidden' : ''}`}>
+          <div className="w-32 h-1 bg-slate-300 rounded-full"></div>
         </div>
       </nav>
 

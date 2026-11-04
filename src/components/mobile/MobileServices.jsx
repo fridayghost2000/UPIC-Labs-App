@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MobileServices({ onBookTest }) {
+export default function MobileServices({ isTablet = false, onBookTest }) {
   const [filter, setFilter] = useState('all');
 
   const categories = [
@@ -125,8 +125,8 @@ export default function MobileServices({ onBookTest }) {
         </div>
       </div>
 
-      {/* Services List - FULL WIDTH CLEAN CARDS (NO CRAMPED 2-COLUMN) */}
-      <div className="flex flex-col gap-3">
+      {/* Services List - FULL WIDTH ON MOBILE, 2-COLUMN ON TABLET */}
+      <div className={isTablet ? "grid grid-cols-2 gap-4" : "flex flex-col gap-3"}>
         {filteredServices.map((svc) => (
           <div
             key={svc.id}

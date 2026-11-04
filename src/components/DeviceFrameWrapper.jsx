@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import MobileApp from './mobile/MobileApp';
+import { Iphone } from './magicui/iphone';
+
+const getInitialViewMode = () => {
+  if (typeof window === 'undefined') return 'desktop';
+  const width = window.innerWidth;
+  const ua = navigator.userAgent || '';
+  const isTouchTablet =
+    /iPad|Tablet|Android(?!.*Mobile)/i.test(ua) ||
+    (navigator.maxTouchPoints > 1 && width >= 640 && width <= 1366);
+
+  if (width < 640) return 'mobile';
+  if ((width >= 640 && width <= 1180) || isTouchTablet) return 'tablet';
+  return 'desktop';
+};
 
 export default function DeviceFrameWrapper() {
   const [currentTime, setCurrentTime] = useState('9:41');
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
+  const [viewMode, setViewMode] = useState(getInitialViewMode);
 
-  // Update real-time clock (or standard 9:41)
+  // Update clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -19,91 +33,85 @@ export default function DeviceFrameWrapper() {
     return () => clearInterval(interval);
   }, []);
 
-  // Detect screen size: If on real mobile device (<768px), render 100% native fullscreen
+  // Detect screen viewport: Mobile (<640px), Tablet (640px-1180px or iPad/touch tablet in DevTools), Desktop (>1180px)
   useEffect(() => {
-    const checkScreen = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
+    const checkViewport = () => {
+      const width = window.innerWidth;
+      const ua = navigator.userAgent || '';
+      const isTouchTablet =
+        /iPad|Tablet|Android(?!.*Mobile)/i.test(ua) ||
+        (navigator.maxTouchPoints > 1 && width >= 640 && width <= 1366);
+
+      if (width < 640) {
+        setViewMode('mobile');
+      } else if ((width >= 640 && width <= 1180) || isTouchTablet) {
+        setViewMode('tablet');
+      } else {
+        setViewMode('desktop');
+      }
     };
-    checkScreen();
-    window.addEventListener('resize', checkScreen);
-    return () => window.removeEventListener('resize', checkScreen);
+
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
-  // Real mobile viewports: native full screen with no mockup bezels
-  if (!isLargeScreen) {
+  // 1. MOBILE VIEWPORT (<640px): Full native screen, no outer frame
+  if (viewMode === 'mobile') {
     return (
       <div className="w-full h-screen overflow-hidden bg-surface">
-        <MobileApp />
+        <MobileApp isTablet={false} />
       </div>
     );
   }
 
-  // DESKTOP: COMPLETELY BLANK SCREEN WITH CENTERED PHONE (Exact 2nd image reference)
+  // 2. TABLET VIEWPORT (640px-1180px, iPad, Surface Pro, etc.): Full native screen, no blank screen, covers 100%
+  if (viewMode === 'tablet') {
+    return (
+      <div className="w-full h-screen overflow-hidden bg-surface">
+        <MobileApp isTablet={true} />
+      </div>
+    );
+  }
+
+  // 3. DESKTOP VIEWPORT (>1180px): Magic UI iPhone centered on dark canvas
   return (
     <div className="min-h-screen w-full bg-[#080d1a] flex items-center justify-center p-2 sm:p-4 select-none overflow-hidden">
       
-      {/* PHONE DEVICE CHASSIS (Centered, no external text or controls) */}
-      <div className="relative">
-        
-        {/* Hardware Side Buttons */}
-        {/* Left Action Button */}
-        <div className="absolute -left-[4px] top-[110px] w-[4px] h-[26px] bg-[#2d3240] rounded-l-sm border-l border-y border-[#3e4556]"></div>
-        {/* Left Volume Up */}
-        <div className="absolute -left-[4px] top-[150px] w-[4px] h-[50px] bg-[#2d3240] rounded-l-sm border-l border-y border-[#3e4556]"></div>
-        {/* Left Volume Down */}
-        <div className="absolute -left-[4px] top-[212px] w-[4px] h-[50px] bg-[#2d3240] rounded-l-sm border-l border-y border-[#3e4556]"></div>
-        {/* Right Power Button */}
-        <div className="absolute -right-[4px] top-[165px] w-[4px] h-[72px] bg-[#2d3240] rounded-r-sm border-r border-y border-[#3e4556]"></div>
-
-        {/* Outer Phone Bezel */}
-        <div className="relative w-[390px] h-[min(844px,calc(100vh-24px))] bg-[#141824] p-[10px] rounded-[52px] shadow-[0_30px_90px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.08),inset_0_0_0_2px_rgba(255,255,255,0.05)] border border-[#232938] flex flex-col overflow-hidden">
+      {/* Magic UI iPhone Container */}
+      <div className="relative h-[min(850px,calc(100vh-28px))] aspect-[433/882] drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
+        <Iphone className="size-full">
           
-          {/* Inner Phone Screen Container */}
-          <div className="relative w-full h-full bg-surface rounded-[42px] overflow-hidden flex flex-col shadow-inner">
-            
-            {/* Top iOS Status Bar with Dynamic Island */}
-            <div className="w-full h-10 px-6 pt-1 flex items-center justify-between text-on-surface shrink-0 bg-surface z-40 select-none">
-              {/* Clock */}
-              <span className="text-[13px] font-bold tracking-tight pl-1 text-on-surface">
+          {/* iOS Top Status Bar (flanking the Dynamic Island) */}
+          <div className="w-full h-11 px-7 pt-2 flex items-center justify-between text-on-surface shrink-0 bg-surface z-30 select-none">
+            {/* Clock */}
+            <div className="w-16 flex items-center pl-1">
+              <span className="text-[13px] font-bold tracking-tight text-slate-800">
                 {currentTime}
               </span>
+            </div>
 
-              {/* Dynamic Island Capsule */}
-              <div className="w-24 h-6 bg-black rounded-full mx-auto flex items-center justify-between px-2.5 shadow-sm">
-                <div className="w-2 h-2 rounded-full bg-[#111] opacity-60"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-[#0a1224] ring-1 ring-[#1a233a] flex items-center justify-center">
-                  <div className="w-1 h-1 rounded-full bg-[#1b2b4f]"></div>
-                </div>
-              </div>
+            {/* Dynamic Island reserved clearance */}
+            <div className="w-28 h-6 pointer-events-none shrink-0"></div>
 
-              {/* Status Icons: Cellular, Wifi, Battery */}
-              <div className="flex items-center gap-1.5 text-[11px] pr-1 text-on-surface">
-                <span className="material-symbols-outlined text-[15px] leading-none">signal_cellular_alt</span>
-                <span className="material-symbols-outlined text-[15px] leading-none">wifi</span>
-                <div className="w-5 h-2.5 border border-on-surface rounded-sm p-0.5 flex items-center">
-                  <div className="w-full h-full bg-on-surface rounded-2xs"></div>
-                </div>
+            {/* Status Icons: Cellular, Wifi, Battery */}
+            <div className="w-16 flex items-center justify-end gap-1.5 text-slate-800 pr-1 shrink-0 overflow-hidden">
+              <span className="material-symbols-outlined text-[15px] leading-none shrink-0">signal_cellular_alt</span>
+              <span className="material-symbols-outlined text-[15px] leading-none shrink-0">wifi</span>
+              <div className="w-5 h-2.5 border border-slate-700 rounded-sm p-0.5 flex items-center shrink-0">
+                <div className="w-full h-full bg-slate-800 rounded-2xs"></div>
               </div>
             </div>
-
-            {/* UPIC Labs Mobile Application */}
-            <div className="flex-1 w-full overflow-hidden relative flex flex-col">
-              <MobileApp />
-            </div>
-
-            {/* iOS Bottom Home Indicator Bar */}
-            <div className="w-full h-4 bg-surface-card flex items-center justify-center shrink-0 z-40">
-              <div className="w-32 h-1 bg-on-surface/30 rounded-full"></div>
-            </div>
-
           </div>
-        </div>
 
+          {/* UPIC Labs Mobile Application (Mobile layout inside the iPhone frame) */}
+          <div className="flex-1 w-full overflow-hidden relative flex flex-col">
+            <MobileApp isTablet={false} />
+          </div>
+
+        </Iphone>
       </div>
 
     </div>
   );
 }
-
-
-

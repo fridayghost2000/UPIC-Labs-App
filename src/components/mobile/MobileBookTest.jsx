@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MobileBookTest({ initialCategory = 'workplace', onComplete, onCancel }) {
+export default function MobileBookTest({ isTablet = false, initialCategory = 'workplace', onComplete, onCancel }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState(() => ({
     category: initialCategory,
@@ -58,20 +58,20 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
   return (
     <div className="flex flex-col w-full px-4 py-3 pb-8 space-y-3">
       {/* Wizard Header */}
-      <div className="bg-surface-card rounded-2xl p-space-md border border-border-subtle shadow-sm mb-space-sm">
-        <div className="flex items-center justify-between mb-2">
+      <div className="bg-surface-card rounded-xl p-3 border border-border-subtle shadow-sm mb-1">
+        <div className="flex items-center justify-between mb-1">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-[14px]">
+            <div className="w-6 h-6 rounded-md bg-primary-container text-on-primary flex items-center justify-center font-bold text-[11px] shrink-0">
               {step < 4 ? `${step}/3` : '✓'}
             </div>
             <div>
-              <h2 className="font-headline-sm text-headline-sm font-bold text-on-surface">
+              <h2 className="text-[13px] font-bold text-on-surface leading-tight">
                 {step === 1 && 'Select Diagnostic Test'}
                 {step === 2 && 'Date, Time & Facility'}
                 {step === 3 && 'Donor & Contact Information'}
                 {step === 4 && 'Appointment Pass Confirmed'}
               </h2>
-              <span className="font-body-sm text-body-sm text-on-surface-variant">
+              <span className="text-[10px] text-on-surface-variant leading-tight block mt-0.5">
                 {step === 1 && 'Choose from accredited clinical panels'}
                 {step === 2 && 'London Central Lab or Mobile Dispatch'}
                 {step === 3 && 'Encrypted under HIPAA guidelines'}
@@ -83,7 +83,7 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
             <button
               type="button"
               onClick={onCancel}
-              className="text-on-surface-variant hover:text-on-surface text-[12px] font-label-md"
+              className="text-on-surface-variant hover:text-on-surface text-[11px] font-semibold cursor-pointer outline-none"
             >
               Cancel
             </button>
@@ -92,7 +92,7 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
 
         {/* Step Progress Bar */}
         {step < 4 && (
-          <div className="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mt-2">
+          <div className="w-full bg-slate-100 rounded-full h-1 overflow-hidden mt-1.5">
             <div
               className="bg-primary h-full transition-all duration-300"
               style={{ width: `${(step / 3) * 100}%` }}
@@ -108,7 +108,7 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
             <label className="font-label-caps text-label-caps text-on-surface-variant uppercase font-bold block mb-2">
               Select Testing Category
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className={`grid gap-2 ${isTablet ? 'grid-cols-4' : 'grid-cols-2'}`}>
               {[
                 { id: 'workplace', name: 'Workplace Drug', icon: 'biotech' },
                 { id: 'dot', name: 'Federal DOT', icon: 'local_shipping' },
@@ -139,7 +139,7 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
             <label className="font-label-caps text-label-caps text-on-surface-variant uppercase font-bold block mb-2">
               Select Specific Panel / Service
             </label>
-            <div className="space-y-2">
+            <div className={isTablet ? "grid grid-cols-2 gap-2" : "space-y-2"}>
               {(testOptionsByCategory[formData.category] || []).map((test, idx) => (
                 <label
                   key={idx}
@@ -180,7 +180,7 @@ export default function MobileBookTest({ initialCategory = 'workplace', onComple
             <label className="font-label-caps text-label-caps text-on-surface-variant uppercase font-bold block mb-2">
               Collection Method
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className={`grid gap-2 ${isTablet ? 'grid-cols-4' : 'grid-cols-2'}`}>
               <button
                 type="button"
                 onClick={() => setFormData((prev) => ({ ...prev, locationType: 'clinic' }))}

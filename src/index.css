@@ -8,6 +8,7 @@
     padding: 0;
     width: 100%;
     min-height: 100%;
+    overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }
   body {
@@ -46,6 +47,9 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  max-width: 1.25em;
+  overflow: hidden;
+  vertical-align: middle;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
   font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;

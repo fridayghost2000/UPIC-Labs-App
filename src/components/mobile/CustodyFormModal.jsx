@@ -1,154 +1,168 @@
 import React from 'react';
 
+/**
+ * Minimal & Responsive Chain-of-Custody (CCF) Modal
+ * Clean clinical mobile card with essential custody verification details.
+ */
 export default function CustodyFormModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute inset-0 z-50 flex items-end sm:items-center justify-center p-2 bg-inverse-surface/60 backdrop-blur-sm animate-fade-in">
+    <div
+      className="absolute inset-0 z-50 flex items-center justify-center p-3 bg-slate-900/65 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
       <div
-        className="w-full max-w-lg bg-surface-card rounded-t-2xl sm:rounded-2xl shadow-2xl border border-border-subtle max-h-[90vh] flex flex-col overflow-hidden animate-slide-up"
+        className="w-full max-w-[350px] max-h-[85%] bg-white rounded-2xl shadow-2xl border border-slate-100 flex flex-col overflow-hidden text-slate-800 animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="p-4 bg-primary text-on-primary flex items-center justify-between">
+        {/* 1. Sleek Compact Header */}
+        <div className="px-4 py-3 bg-primary text-white flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[22px] text-tertiary-fixed">verified_user</span>
+            <span className="material-symbols-outlined text-[18px] text-amber-300">verified_user</span>
             <div>
-              <div className="font-headline-sm text-[16px] font-bold text-on-primary">
-                Custody &amp; Control Record (CCF)
+              <div className="text-[13.5px] font-bold tracking-tight leading-tight">
+                Chain of Custody (CCF)
               </div>
-              <div className="font-body-sm text-[11px] text-surface-container opacity-90">
-                Form ST-47 • DOT / Federal SAMHSA Protocol
+              <div className="text-[10px] text-blue-200">
+                Form ST-47 • DOT / SAMHSA Protocol
               </div>
             </div>
           </div>
+
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-white transition-all cursor-pointer outline-none"
+            title="Close"
           >
-            <span className="material-symbols-outlined text-[18px]">close</span>
+            <span className="material-symbols-outlined text-[16px]">close</span>
           </button>
         </div>
 
-        {/* Scrollable Document Content */}
-        <div className="p-4 overflow-y-auto space-y-3.5 text-on-surface">
+        {/* 2. Scrollable Minimal Content */}
+        <div className="p-3.5 overflow-y-auto no-scrollbar space-y-3">
+          
           {/* Specimen Barcode & Status Banner */}
-          <div className="p-3 bg-surface-canvas rounded-xl border border-border-subtle flex items-center justify-between">
+          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
             <div>
-              <span className="text-[10px] font-label-caps uppercase text-on-surface-variant font-bold block">
-                Specimen Barcode Identification
+              <span className="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">
+                Specimen Barcode
               </span>
-              <span className="text-[17px] font-mono font-bold text-primary tracking-wide">
+              <span className="text-[14px] font-mono font-bold text-primary tracking-wide">
                 #UPIC-8842-DK
               </span>
             </div>
-            <span className="px-2.5 py-1 rounded-full bg-surface-container font-label-caps text-label-caps text-primary uppercase font-bold">
-              In Analysis
-            </span>
-          </div>
-
-          {/* Section 1: Donor & Order Details */}
-          <div className="border border-border-subtle rounded-xl p-3 bg-surface-card">
-            <div className="text-[11px] font-label-caps uppercase text-primary font-bold mb-2 pb-1 border-b border-border-subtle flex items-center justify-between">
-              <span>Step 1: Collection Verification</span>
-              <span className="text-status-compliant font-bold">● Seal Verified</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-body-sm text-[12px]">
-              <div>
-                <span className="text-on-surface-variant block text-[10px]">Collection Facility</span>
-                <span className="font-semibold text-on-surface">London Testing HQ, Suite 2</span>
-              </div>
-              <div>
-                <span className="text-on-surface-variant block text-[10px]">Collection Date &amp; Time</span>
-                <span className="font-semibold text-on-surface">Nov 4, 11:24 AM EST</span>
-              </div>
-              <div>
-                <span className="text-on-surface-variant block text-[10px]">Specimen Type</span>
-                <span className="font-semibold text-on-surface">10-Panel Urine (Split A/B)</span>
-              </div>
-              <div>
-                <span className="text-on-surface-variant block text-[10px]">Collector Certification</span>
-                <span className="font-semibold text-on-surface">DOT Collector #KY-9042</span>
-              </div>
+            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-blue-100/80 text-primary text-[10px] font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+              <span>In Analysis</span>
             </div>
           </div>
 
-          {/* Section 2: Chain of Custody Integrity & Temp Check */}
-          <div className="border border-border-subtle rounded-xl p-3 bg-surface-card">
-            <div className="text-[11px] font-label-caps uppercase text-primary font-bold mb-2 pb-1 border-b border-border-subtle">
-              Step 2: Chain of Custody Physical Integrity
+          {/* Verification Details (Clean Key-Value Pairs) */}
+          <div className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 space-y-2">
+            <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500 pb-1 border-b border-slate-200/60">
+              <span>Collection Verification</span>
+              <span className="text-status-compliant flex items-center gap-0.5 font-bold normal-case">
+                <span className="material-symbols-outlined text-[12px]">verified</span>
+                Seal Verified
+              </span>
             </div>
-            <div className="space-y-2 text-body-sm text-[12px]">
-              <div className="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                <span className="text-on-surface-variant font-medium">Temperature at Collection (90°-100°F):</span>
-                <span className="font-bold text-status-compliant flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                  94.6°F [IN SPEC]
+
+            <div className="grid grid-cols-2 gap-x-2.5 gap-y-1.5 text-[11px]">
+              <div>
+                <span className="text-slate-400 block text-[9.5px]">Specimen Type</span>
+                <span className="font-semibold text-slate-800">10-Panel Urine (Split)</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block text-[9.5px]">Collection Time</span>
+                <span className="font-semibold text-slate-800">Nov 4, 11:24 AM EST</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block text-[9.5px]">Facility</span>
+                <span className="font-semibold text-slate-800">London HQ, Ste 2</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block text-[9.5px]">Collector ID</span>
+                <span className="font-semibold text-slate-800">DOT #KY-9042</span>
+              </div>
+            </div>
+
+            {/* Physical Integrity Check Pills */}
+            <div className="pt-1.5 border-t border-slate-200/60 flex items-center justify-between gap-1.5 text-[10px]">
+              <div className="flex-1 px-2 py-1 bg-white rounded-lg border border-slate-200/80 flex items-center justify-between">
+                <span className="text-slate-500">Temp:</span>
+                <span className="font-bold text-status-compliant flex items-center gap-0.5">
+                  <span className="material-symbols-outlined text-[11px]">check_circle</span>
+                  94.6°F
                 </span>
               </div>
-              <div className="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                <span className="text-on-surface-variant font-medium">Bottle A Tamper Seal:</span>
-                <span className="font-bold text-status-compliant flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">verified</span>
-                  INTACT &amp; INITIALED
-                </span>
-              </div>
-              <div className="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                <span className="text-on-surface-variant font-medium">Bottle B Split Seal:</span>
-                <span className="font-bold text-status-compliant flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">verified</span>
-                  STORED SECURELY
+              <div className="flex-1 px-2 py-1 bg-white rounded-lg border border-slate-200/80 flex items-center justify-between">
+                <span className="text-slate-500">Bottle A/B:</span>
+                <span className="font-bold text-status-compliant flex items-center gap-0.5">
+                  <span className="material-symbols-outlined text-[11px]">lock</span>
+                  Intact
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Section 3: Laboratory Tracking Trail */}
-          <div className="border border-border-subtle rounded-xl p-3 bg-surface-card">
-            <div className="text-[11px] font-label-caps uppercase text-primary font-bold mb-2 pb-1 border-b border-border-subtle">
-              Step 3: Custody Event Log
+          {/* Custody Event Log (Clean Minimal Timeline) */}
+          <div className="p-3 rounded-xl border border-slate-100 bg-white space-y-2">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              Custody Timeline
             </div>
-            <ol className="relative border-l border-primary-container/30 ml-2 space-y-3 text-[11px]">
-              <li className="ml-3">
-                <div className="absolute -left-1.5 mt-0.5 w-3 h-3 rounded-full bg-status-compliant border-2 border-white"></div>
-                <div className="font-bold text-on-surface">11:24 AM - Collected &amp; Sealed</div>
-                <div className="text-on-surface-variant">Primary collector London KY certified bench</div>
-              </li>
-              <li className="ml-3">
-                <div className="absolute -left-1.5 mt-0.5 w-3 h-3 rounded-full bg-status-compliant border-2 border-white"></div>
-                <div className="font-bold text-on-surface">11:58 AM - Accessioned into Central Lab</div>
-                <div className="text-on-surface-variant">SAMHSA accession bay #3, temperature logged</div>
-              </li>
-              <li className="ml-3">
-                <div className="absolute -left-1.5 mt-0.5 w-3 h-3 rounded-full bg-primary-container border-2 border-white animate-pulse"></div>
-                <div className="font-bold text-primary">12:30 PM - Immunoassay Screening (In Progress)</div>
-                <div className="text-on-surface-variant">Automated robotic analyzer running 10-panel cutoff</div>
-              </li>
-            </ol>
+
+            <div className="relative pl-3.5 space-y-2.5 border-l-2 border-slate-100 text-[10.5px]">
+              <div className="relative">
+                <div className="absolute -left-[19px] top-1 w-2 h-2 rounded-full bg-status-compliant ring-2 ring-white"></div>
+                <div className="font-bold text-slate-800">11:24 AM • Collected &amp; Sealed</div>
+                <div className="text-slate-500 text-[9.5px]">Certified collector bench, tamper sealed</div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute -left-[19px] top-1 w-2 h-2 rounded-full bg-status-compliant ring-2 ring-white"></div>
+                <div className="font-bold text-slate-800">11:58 AM • Accessioned at Central Lab</div>
+                <div className="text-slate-500 text-[9.5px]">SAMHSA accession bay #3, temp logged</div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute -left-[19px] top-1 w-2 h-2 rounded-full bg-secondary ring-2 ring-white animate-pulse"></div>
+                <div className="font-bold text-primary">12:30 PM • Immunoassay Screening</div>
+                <div className="text-slate-500 text-[9.5px]">Robotic analyzer running 10-panel cutoff</div>
+              </div>
+            </div>
           </div>
+
+          {/* Legal Compliance Footer Line */}
+          <div className="flex items-center justify-center gap-1.5 text-[9.5px] text-slate-400 py-0.5">
+            <span className="material-symbols-outlined text-[12px] text-status-compliant">gavel</span>
+            <span>Admissible under DOT 49 CFR Part 40 &amp; SAMHSA</span>
+          </div>
+
         </div>
 
-        {/* Footer actions */}
-        <div className="p-3 bg-surface-canvas border-t border-border-subtle flex items-center gap-2">
+        {/* 3. Action Buttons */}
+        <div className="p-2.5 bg-slate-50 border-t border-slate-100 flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={() => window.print()}
-            className="flex-1 py-2 px-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors"
+            className="flex-1 py-1.5 px-3 bg-primary hover:bg-secondary active:scale-95 text-white rounded-xl text-[11px] font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer outline-none"
           >
-            <span className="material-symbols-outlined text-[16px]">print</span>
+            <span className="material-symbols-outlined text-[14px]">print</span>
             <span>Print Official CCF</span>
           </button>
+          
           <button
             type="button"
             onClick={onClose}
-            className="py-2 px-4 bg-surface-container text-on-surface rounded-lg font-label-md text-label-md font-semibold hover:bg-surface-variant transition-colors"
+            className="py-1.5 px-3.5 bg-white hover:bg-slate-100 active:scale-95 text-slate-700 border border-slate-200 rounded-xl text-[11px] font-bold transition-all cursor-pointer outline-none"
           >
             Close
           </button>
         </div>
+
       </div>
     </div>
   );
 }
-
