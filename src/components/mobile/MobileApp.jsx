@@ -7,7 +7,7 @@ import CustodyFormModal from './CustodyFormModal';
 import EmployerHubModal from './EmployerHubModal';
 import NotificationsDropdown from './NotificationsDropdown';
 
-export default function MobileApp({ isTablet = false }) {
+export default function MobileApp({ isTablet = false, showHomeIndicator = false }) {
   const [activeTab, setActiveTab] = useState('home'); // 'home' | 'services' | 'book' | 'reports'
   const [custodyModalOpen, setCustodyModalOpen] = useState(false);
   const [employerHubOpen, setEmployerHubOpen] = useState(false);
@@ -85,7 +85,7 @@ export default function MobileApp({ isTablet = false }) {
       </header>
 
       {/* 2. SCROLLABLE INNER VIEWPORT */}
-      <main id="mobile-scroll-container" className="flex-1 overflow-y-auto no-scrollbar relative w-full bg-surface">
+      <main id="mobile-scroll-container" className="flex-1 min-h-0 overflow-y-auto no-scrollbar relative w-full bg-surface">
         <div className={`w-full ${isTablet ? 'max-w-5xl mx-auto' : ''}`}>
           {activeTab === 'home' && (
             <MobileDashboard
@@ -195,10 +195,12 @@ export default function MobileApp({ isTablet = false }) {
 
         </div>
 
-        {/* Integrated iOS Home Indicator (only on phone form factor) */}
-        <div className={`w-full pb-2 pt-0.5 flex items-center justify-center pointer-events-none ${isTablet ? 'hidden' : ''}`}>
-          <div className="w-32 h-1 bg-slate-300 rounded-full"></div>
-        </div>
+        {/* Integrated iOS Home Indicator (only inside desktop frame mockup) */}
+        {showHomeIndicator && (
+          <div className="w-full pb-2 pt-0.5 flex items-center justify-center pointer-events-none">
+            <div className="w-32 h-1 bg-slate-300 rounded-full"></div>
+          </div>
+        )}
       </nav>
 
       {/* 4. MODALS (Pop up strictly inside the phone screen) */}

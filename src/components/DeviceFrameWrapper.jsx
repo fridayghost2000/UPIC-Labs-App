@@ -59,8 +59,8 @@ export default function DeviceFrameWrapper() {
   // 1. MOBILE VIEWPORT (<640px): Full native screen, no outer frame
   if (viewMode === 'mobile') {
     return (
-      <div className="w-full h-screen overflow-hidden bg-surface">
-        <MobileApp isTablet={false} />
+      <div className="w-full h-screen h-[100dvh] flex flex-col overflow-hidden bg-surface">
+        <MobileApp isTablet={false} showHomeIndicator={false} />
       </div>
     );
   }
@@ -68,8 +68,8 @@ export default function DeviceFrameWrapper() {
   // 2. TABLET VIEWPORT (640px-1180px, iPad, Surface Pro, etc.): Full native screen, no blank screen, covers 100%
   if (viewMode === 'tablet') {
     return (
-      <div className="w-full h-screen overflow-hidden bg-surface">
-        <MobileApp isTablet={true} />
+      <div className="w-full h-screen h-[100dvh] flex flex-col overflow-hidden bg-surface">
+        <MobileApp isTablet={true} showHomeIndicator={false} />
       </div>
     );
   }
@@ -106,7 +106,7 @@ export default function DeviceFrameWrapper() {
 
           {/* UPIC Labs Mobile Application (Mobile layout inside the iPhone frame) */}
           <div className="flex-1 w-full overflow-hidden relative flex flex-col">
-            <MobileApp isTablet={false} />
+            <MobileApp isTablet={false} showHomeIndicator={true} />
           </div>
 
         </Iphone>
