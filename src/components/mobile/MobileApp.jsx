@@ -85,7 +85,12 @@ export default function MobileApp({ isTablet = false, showHomeIndicator = false 
       </header>
 
       {/* 2. SCROLLABLE INNER VIEWPORT */}
-      <main id="mobile-scroll-container" className="flex-1 min-h-0 overflow-y-auto no-scrollbar relative w-full bg-surface">
+      <main
+        id="mobile-scroll-container"
+        className={`flex-1 min-h-0 overflow-y-auto no-scrollbar relative w-full bg-surface ${
+          showHomeIndicator ? 'pb-6' : 'pb-28'
+        }`}
+      >
         <div className={`w-full ${isTablet ? 'max-w-5xl mx-auto' : ''}`}>
           {activeTab === 'home' && (
             <MobileDashboard
@@ -126,7 +131,13 @@ export default function MobileApp({ isTablet = false, showHomeIndicator = false 
       </main>
 
       {/* 3. PINNED BOTTOM NAVIGATION */}
-      <nav className="sticky bottom-0 left-0 right-0 z-30 shrink-0 bg-white/95 backdrop-blur-md">
+      <nav
+        className={`${
+          showHomeIndicator
+            ? 'sticky bottom-0'
+            : 'fixed bottom-0 left-0 right-0 pb-safe'
+        } z-40 shrink-0 bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]`}
+      >
         <div className={`flex justify-around items-center h-14 ${isTablet ? 'max-w-md mx-auto px-4' : 'w-full px-3'}`}>
           
           {/* Tab 1: Home */}

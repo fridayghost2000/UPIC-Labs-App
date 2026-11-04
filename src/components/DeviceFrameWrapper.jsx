@@ -61,7 +61,7 @@ export default function DeviceFrameWrapper() {
   // 1. MOBILE VIEWPORT (<640px): Full native screen, no outer frame
   if (viewMode === 'mobile') {
     return (
-      <div className="w-full h-screen h-[100dvh] flex flex-col overflow-hidden bg-surface">
+      <div className="fixed inset-0 w-full h-full flex flex-col overflow-hidden bg-surface">
         <MobileApp isTablet={false} showHomeIndicator={false} />
       </div>
     );
@@ -70,7 +70,7 @@ export default function DeviceFrameWrapper() {
   // 2. TABLET VIEWPORT (640px-1180px, iPad, Surface Pro, etc.): Full native screen, no blank screen, covers 100%
   if (viewMode === 'tablet') {
     return (
-      <div className="w-full h-screen h-[100dvh] flex flex-col overflow-hidden bg-surface">
+      <div className="fixed inset-0 w-full h-full flex flex-col overflow-hidden bg-surface">
         <MobileApp isTablet={true} showHomeIndicator={false} />
       </div>
     );
